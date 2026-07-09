@@ -1,0 +1,28 @@
+name: seedly_backend
+
+on:
+  push:
+    branches:
+      -main
+
+      jobs:
+        deploy:
+          runs-on: ubbuntu latest
+
+          steps:
+            -name: git library
+             uses: actions/checkout@v4
+             -name: ssh connections
+             uses: appleboy/ssh-action@v1.2.0
+
+             with:
+             host: ${{secrets.IP}}
+             username: ${{secrets.USERNAME}}
+             password: ${{secrets.PASSWORD}}
+
+             script: |
+               cd /home/adon/seedly_bcknd
+               git pull origin main
+               sudo npm i
+               pm2 delete "seedly_bcknd"
+               pm2 start npm --name index.js -- name "seedly_bcnd"
