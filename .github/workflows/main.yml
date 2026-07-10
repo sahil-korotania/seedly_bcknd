@@ -20,7 +20,7 @@ on:
              username: ${{secrets.USERNAME}}
              password: ${{secrets.PASSWORD}}
 
-             script: |
+              script: |
                cd /home/sahil/seedly_bcknd
                git pull origin main
                sudo npm i
