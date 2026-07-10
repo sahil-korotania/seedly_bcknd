@@ -21,8 +21,8 @@ on:
              password: ${{secrets.PASSWORD}}
 
              script: |
-               cd /home/adon/seedly_bcknd
+               cd /home/sahil/seedly_bcknd
                git pull origin main
                sudo npm i
                pm2 delete "seedly_bcknd"
-               pm2 start npm --name index.js -- name "seedly_bcnd"
+               pm2 start index.js -- name "seedly_bcnd"
