@@ -25,4 +25,4 @@ on:
                git pull origin main
                sudo npm i
                pm2 delete "seedly_bcknd"
-               pm2 start index.js -- name "seedly_bcnd" http-server -- -p 4200 -d false
+               pm2 start index.js --name "seedly_bcnd" 
