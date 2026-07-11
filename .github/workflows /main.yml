@@ -4,23 +4,22 @@ on:
   push:
     branches:
       -main
+jobs:
+  deploy:
+  runs-on: ubbuntu latest
 
-      jobs:
-        deploy:
-          runs-on: ubbuntu latest
+    steps:
+      -name: git library
+       uses: actions/checkout@v4
+      -name: ssh connections
+       uses: appleboy/ssh-action@v1.2.0
 
-          steps:
-            -name: git library
-             uses: actions/checkout@v4
-             -name: ssh connections
-             uses: appleboy/ssh-action@v1.2.0
+         with:
+           host: ${{secrets.IP}}
+           username: ${{secrets.USERNAME}}
+           password: ${{secrets.PASSWORD}}
 
-             with:
-             host: ${{secrets.IP}}
-             username: ${{secrets.USERNAME}}
-             password: ${{secrets.PASSWORD}}
-
-              script: |
+             script: |
                cd /home/sahil/seedly_bcknd
                git pull origin main
                sudo npm i
